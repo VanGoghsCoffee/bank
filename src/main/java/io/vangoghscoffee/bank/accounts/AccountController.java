@@ -20,7 +20,7 @@ public class AccountController {
     }
 
     @RequestMapping(value="/accounts", method=RequestMethod.POST)
-    public Account createAccount(@RequestBody String currency) {
-        return this.accountService.createAccount(currency);
+    public Account createAccount() {
+        return this.accountService.createAccount();
     }
 }

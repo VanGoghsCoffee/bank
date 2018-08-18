@@ -1,8 +1,5 @@
 package io.vangoghscoffee.bank.transactions;
 
-import io.vangoghscoffee.bank.accounts.Account;
-
-import java.util.Currency;
 import java.util.UUID;
 
 public class Transaction {
@@ -10,32 +7,16 @@ public class Transaction {
         this.id = UUID.randomUUID().toString();
     }
 
-    public Transaction(Account senderAccount, Account receiverAccount, Double amount, Currency currency) {
+    public Transaction(UUID senderAccountUuid, UUID receiverAccountUuid, Double amount) {
         this.id = UUID.randomUUID().toString();
-        this.senderAccount = senderAccount;
-        this.receiverAccount = receiverAccount;
+        this.senderAccountUuid = senderAccountUuid;
+        this.receiverAccountUuid = receiverAccountUuid;
         this.amount = amount;
-        this.currency = currency;
+        this.verified = false;
     }
 
     public String getId() {
         return id;
-    }
-
-    public Account getSenderAccount() {
-        return senderAccount;
-    }
-
-    public void setSenderAccount(Account senderAccount) {
-        this.senderAccount = senderAccount;
-    }
-
-    public Account getReceiverAccount() {
-        return receiverAccount;
-    }
-
-    public void setReceiverAccount(Account receiverAccount) {
-        this.receiverAccount = receiverAccount;
     }
 
     public Double getAmount() {
@@ -46,17 +27,33 @@ public class Transaction {
         this.amount = amount;
     }
 
-    public Currency getCurrency() {
-        return currency;
+    public Boolean getVerified() {
+        return verified;
     }
 
-    public void setCurrency(Currency currency) {
-        this.currency = currency;
+    public void setVerified(Boolean verified) {
+        this.verified = verified;
+    }
+
+    public UUID getSenderAccountUuid() {
+        return senderAccountUuid;
+    }
+
+    public void setSenderAccountUuid(UUID senderAccountUuid) {
+        this.senderAccountUuid = senderAccountUuid;
+    }
+
+    public UUID getReceiverAccountUuid() {
+        return receiverAccountUuid;
+    }
+
+    public void setReceiverAccountUuid(UUID receiverAccountUuid) {
+        this.receiverAccountUuid = receiverAccountUuid;
     }
 
     private String id;
-    private Account senderAccount;
-    private Account receiverAccount;
+    private UUID senderAccountUuid;
+    private UUID receiverAccountUuid;
     private Double amount;
-    private Currency currency;
+    private Boolean verified;
 }

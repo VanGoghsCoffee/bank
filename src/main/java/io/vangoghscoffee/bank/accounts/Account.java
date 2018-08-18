@@ -7,13 +7,12 @@ import java.util.Currency;
 import java.util.UUID;
 
 public class Account {
-    public Account(Currency currency) {
-        this.id = UUID.randomUUID().toString();
-        this.currency = currency;
+    public Account() {
+        this.id = UUID.randomUUID();
         this.balance = 0.0;
     }
 
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
@@ -29,9 +28,6 @@ public class Account {
         this.balance -= balance;
     }
 
-    public Currency getCurrency() {
-        return currency;
-    }
 
     public ArrayList<Transaction> getTransactions() {
         return transactions;
@@ -41,8 +37,7 @@ public class Account {
         transactions.add(transaction);
     }
 
-    private String id;
+    private UUID id;
     private Double balance;
-    private Currency currency;
     private ArrayList<Transaction> transactions;
 }
